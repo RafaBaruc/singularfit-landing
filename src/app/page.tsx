@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Activity, TrendingUp, Target, ChevronRight, Dumbbell } from 'lucide-react';
+import { track } from '@vercel/analytics';
 
 // --- DADOS DO QUIZ (Mesmos de antes) ---
 const QUESTIONS = [
@@ -32,6 +33,7 @@ const QUESTIONS = [
 ];
 
 export default function LandingPage() {
+  
   // States do Quiz
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
@@ -54,15 +56,19 @@ export default function LandingPage() {
     setCurrentStep(prev => prev + 1);
   };
 
-  const handleFormSubmit = async (e: React.FormEvent) => {
+ const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // await fetch('SUA_URL_DO_FORMSPREE', { method: 'POST', body: JSON.stringify({ name, email }) });
+    
+    // Dispara o evento para a Vercel registrar o clique/conversão!
+    track('Acesso_Antecipado_Solicitado'); 
+    
     setSubmitted(true);
   };
 
   const scrollToValidation = () => {
     document.getElementById('validation-section')?.scrollIntoView({ behavior: 'smooth' });
   };
+  
 
   return (
     <div className="min-h-screen bg-[#0a0a0c] text-white font-sans selection:bg-purple-500/30">
