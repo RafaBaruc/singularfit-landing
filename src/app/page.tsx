@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Activity, TrendingUp, Target, ChevronRight, Dumbbell, Users, Code2, Smartphone, GraduationCap } from 'lucide-react';
+import { Activity, TrendingUp, Target, ChevronRight, Dumbbell, Stethoscope, Users, Trophy, HeartHandshake, ArrowDown, Smartphone, Code2, GraduationCap, CheckCircle2, XCircle, Zap } from 'lucide-react';
 
 // --- DADOS DO QUIZ (Mesmos de antes) ---
 const QUESTIONS = [
@@ -151,45 +151,121 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* FEATURES SECTION */}
-      <section className="py-24 bg-[#0d0d0f] border-y border-white/5">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">Métricas que geram resultados</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">Você não constrói um físico no achismo. Nós trazemos as métricas que os atletas usam, direto para o seu bolso.</p>
+      {/* MANIFESTO / SOBRE O PROJETO (VERSÃO VISUAL) */}
+      <section className="py-24 px-6 bg-[#0a0a0c] relative overflow-hidden">
+        {/* Luzes de fundo */}
+        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-purple-900/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div className="max-w-6xl mx-auto space-y-20 relative z-10">
+          
+          {/* HOOK PRINCIPAL */}
+          <div className="text-center space-y-6 max-w-4xl mx-auto">
+            <h2 className="text-4xl md:text-6xl font-black leading-tight tracking-tight">
+              Treinos feitos para você.<br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">
+                Não para todo mundo.
+              </span>
+            </h2>
+            <p className="text-xl text-gray-400 font-medium">
+              A personalização que faltava na sua jornada fitness.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-[#121214] border border-white/5 p-8 rounded-3xl hover:border-purple-500/30 transition-colors">
-              <div className="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center text-purple-500 mb-6">
-                <TrendingUp className="w-6 h-6" />
+          {/* PROBLEMA VS SOLUÇÃO (CARDS LADO A LADO) */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Card Problema */}
+            <div className="bg-red-950/10 border border-red-900/30 p-8 rounded-3xl space-y-6">
+              <div className="flex items-center gap-3 text-red-400 mb-2">
+                <XCircle className="w-8 h-8" />
+                <h3 className="text-2xl font-bold">A Realidade Atual</h3>
               </div>
-              <h3 className="text-xl font-bold mb-3">Evolução de Carga Real</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Acompanhe o gráfico de evolução dos seus principais levantamentos. Saiba exatamente quando aplicar a sobrecarga progressiva nos treinos.
-              </p>
+              <p className="text-gray-400">A sensação de que seu treino foi apenas copiado e colado de outra pessoa.</p>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3 text-gray-300">
+                  <span className="text-red-500 font-bold mt-0.5">✕</span> Treinos genéricos de gaveta
+                </li>
+                <li className="flex items-start gap-3 text-gray-300">
+                  <span className="text-red-500 font-bold mt-0.5">✕</span> Nenhuma adaptação à sua rotina
+                </li>
+                <li className="flex items-start gap-3 text-gray-300">
+                  <span className="text-red-500 font-bold mt-0.5">✕</span> Acompanhamento limitado ou nulo
+                </li>
+              </ul>
             </div>
 
-            <div className="bg-[#121214] border border-white/5 p-8 rounded-3xl hover:border-purple-500/30 transition-colors">
-              <div className="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center text-purple-500 mb-6">
-                <Activity className="w-6 h-6" />
+            {/* Card Solução */}
+            <div className="bg-purple-900/10 border border-purple-500/30 p-8 rounded-3xl space-y-6 relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-8 opacity-10"><Zap className="w-32 h-32 text-purple-500" /></div>
+              <div className="flex items-center gap-3 text-purple-400 mb-2 relative z-10">
+                <CheckCircle2 className="w-8 h-8" />
+                <h3 className="text-2xl font-bold">Nossa Solução</h3>
               </div>
-              <h3 className="text-xl font-bold mb-3">Monitoramento Contínuo</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Integração com zonas de frequência cardíaca, volume total de treino (tonelagem) e hidratação. O seu dashboard completo de saúde.
-              </p>
-            </div>
-
-            <div className="bg-[#121214] border border-white/5 p-8 rounded-3xl hover:border-purple-500/30 transition-colors">
-              <div className="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center text-purple-500 mb-6">
-                <Target className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Metas e Gamificação</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Estabeleça metas claras como "Perder 3kg" ou "Supino 100kg". Ganhe pontos e recompensas pela sua consistência semanal.
-              </p>
+              <p className="text-gray-400 relative z-10">Uma plataforma que conecta tecnologia, saúde e profissionais especializados.</p>
+              <ul className="space-y-4 relative z-10">
+                <li className="flex items-start gap-3 text-gray-200 font-medium">
+                  <CheckCircle2 className="w-5 h-5 text-purple-500 shrink-0" /> Inteligência que lê seus objetivos e limitações
+                </li>
+                <li className="flex items-start gap-3 text-gray-200 font-medium">
+                  <CheckCircle2 className="w-5 h-5 text-purple-500 shrink-0" /> Ajuste automático de volume e tempo
+                </li>
+                <li className="flex items-start gap-3 text-gray-200 font-medium">
+                  <CheckCircle2 className="w-5 h-5 text-purple-500 shrink-0" /> Evolução rastreada treino a treino
+                </li>
+              </ul>
             </div>
           </div>
+
+          {/* FEATURES - BENTO GRID COMPACTO */}
+          <div className="space-y-8">
+            <h3 className="text-2xl font-bold text-center">O que entregamos:</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {[
+                { icon: Dumbbell, text: "Treinos 100% personalizados" },
+                { icon: TrendingUp, text: "Acompanhamento de evolução" },
+                { icon: Target, text: "Metas e desafios" },
+                { icon: Stethoscope, text: "Adaptação a limitações" },
+                { icon: Users, text: "Profissionais parceiros" },
+                { icon: Trophy, text: "Gamificação e recompensas" }
+              ].map((item, idx) => (
+                <div key={idx} className="bg-[#121214] border border-zinc-800 p-5 rounded-2xl flex flex-col items-center text-center gap-3 hover:border-purple-500/50 transition-colors group">
+                  <item.icon className="w-8 h-8 text-purple-500 group-hover:scale-110 transition-transform" />
+                  <span className="text-sm text-gray-300 font-medium">{item.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* PROPÓSITO E CALL TO ACTION (CTA) INTEGRADOS */}
+          <div className="bg-[#121214] border border-zinc-800 rounded-3xl p-8 md:p-12 text-center space-y-8 max-w-4xl mx-auto">
+            <HeartHandshake className="w-12 h-12 text-purple-500 mx-auto" />
+            
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold">Nosso Propósito</h3>
+              <p className="text-gray-400 max-w-2xl mx-auto">
+                Democratizar o acesso a um acompanhamento personalizado, promovendo saúde e qualidade de vida através da tecnologia.
+              </p>
+            </div>
+
+            <div className="w-full h-px bg-zinc-800 my-8"></div>
+
+            <div className="space-y-6">
+              <h4 className="text-xl font-bold text-white">Ajude a validar esta ideia!</h4>
+              <p className="text-gray-400 max-w-xl mx-auto text-sm">
+                Estamos no desenvolvimento do primeiro protótipo. Responda ao questionário abaixo, deixe seu feedback e participe gratuitamente dos testes da plataforma.
+              </p>
+              
+              <p className="text-lg md:text-xl font-bold text-purple-400 italic pt-4">
+                "O melhor treino não é o mais famoso. É aquele pensado para você."
+              </p>
+              
+              <div className="pt-6 animate-bounce flex justify-center">
+                <button onClick={scrollToValidation} className="p-4 bg-purple-600 rounded-full text-white shadow-lg shadow-purple-600/30 hover:bg-purple-700 transition-colors">
+                  <ArrowDown className="w-6 h-6" />
+                </button>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -229,6 +305,7 @@ export default function LandingPage() {
                 </p>
               </div>
             </div>
+            
 
             {/* CARD: O TIME */}
             <div className="bg-[#121214]/80 backdrop-blur-sm border border-zinc-800 rounded-3xl p-8 hover:border-purple-500/30 transition-all">
@@ -364,6 +441,7 @@ export default function LandingPage() {
         </div>
       </section>
 
+      
       {/* FOOTER */}
       <footer className="border-t border-white/5 py-8 text-center text-zinc-600 text-sm">
         <p>© 2026 Projeto Empreendedorismo UFU - SingularFit. Todos os direitos reservados.</p>
