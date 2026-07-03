@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Activity, TrendingUp, Target, ChevronRight, Dumbbell } from 'lucide-react';
-import { track } from '@vercel/analytics';
+import { Activity, TrendingUp, Target, ChevronRight, Dumbbell, Users, Code2, Smartphone, GraduationCap } from 'lucide-react';
 
 // --- DADOS DO QUIZ (Mesmos de antes) ---
 const QUESTIONS = [
@@ -57,13 +56,28 @@ export default function LandingPage() {
   };
 
  const handleFormSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  e.preventDefault();
+  
+  // Envia os dados para o Formspree
+  try {
+    await fetch('https://formspree.io/f/mdarpybd', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        nome: name,
+        email: email,
+        objetivo: QUESTIONS[0].options[selectedOption || 0].label // Opcional: salva até o objetivo que a pessoa escolheu!
+      }),
+    });
     
-    // Dispara o evento para a Vercel registrar o clique/conversão!
-    track('Acesso_Antecipado_Solicitado'); 
-    
+    // Mostra a tela de sucesso
     setSubmitted(true);
-  };
+  } catch (error) {
+    console.error("Erro ao enviar", error);
+  }
+};
 
   const scrollToValidation = () => {
     document.getElementById('validation-section')?.scrollIntoView({ behavior: 'smooth' });
@@ -174,6 +188,71 @@ export default function LandingPage() {
               <p className="text-gray-400 text-sm leading-relaxed">
                 Estabeleça metas claras como "Perder 3kg" ou "Supino 100kg". Ganhe pontos e recompensas pela sua consistência semanal.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT & DEVELOPMENT SECTION */}
+      <section className="py-24 px-6 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-900/10 blur-[100px] rounded-full pointer-events-none"></div>
+        
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-16 md:flex md:items-end md:justify-between gap-8">
+            <div className="max-w-2xl">
+              <h2 className="text-3xl md:text-5xl font-bold mb-6">Do Campus para a Academia.</h2>
+              <p className="text-gray-400 text-lg leading-relaxed">
+                O SingularFit não é apenas mais um app genérico no mercado. Ele nasceu dentro da Universidade Federal de Uberlândia (UFU) como uma resposta direta à frustração que nós mesmos vivemos com treinos engessados e falta de individualidade.
+              </p>
+            </div>
+            <div className="hidden md:block">
+              <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-transparent rounded-full"></div>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 lg:gap-10">
+            {/* CARD: COMO ESTÁ SENDO FEITO */}
+            <div className="bg-[#121214]/80 backdrop-blur-sm border border-zinc-800 rounded-3xl p-8 hover:border-purple-500/30 transition-all">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 bg-zinc-900 border border-zinc-800 rounded-xl flex items-center justify-center text-purple-400">
+                  <Code2 className="w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-bold">A Engenharia</h3>
+              </div>
+              <p className="text-gray-400 mb-6 leading-relaxed">
+                Estamos construindo a plataforma com a mesma tecnologia usada pelas maiores startups do mundo. Iniciamos nossa validação e arquitetura web utilizando <strong>React e Next.js</strong>, garantindo performance e escalabilidade desde o primeiro dia.
+              </p>
+              <div className="flex items-start gap-4">
+                <div className="mt-1 text-purple-500"><Smartphone className="w-5 h-5" /></div>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  <strong>O Futuro é Mobile:</strong> O ecossistema está sendo preparado para a transição direta para o aplicativo nativo em <strong>React Native</strong>. Isso permitirá o uso offline na academia e integração real com os sensores do seu celular e smartwatch.
+                </p>
+              </div>
+            </div>
+
+            {/* CARD: O TIME */}
+            <div className="bg-[#121214]/80 backdrop-blur-sm border border-zinc-800 rounded-3xl p-8 hover:border-purple-500/30 transition-all">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 bg-zinc-900 border border-zinc-800 rounded-xl flex items-center justify-center text-purple-400">
+                  <Users className="w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-bold">Quem Somos</h3>
+              </div>
+              <p className="text-gray-400 mb-6 leading-relaxed">
+                Nossa equipe é formada por estudantes apaixonados por tecnologia, desenvolvimento de software e, claro, pelo mundo fitness. Unimos a visão de Sistemas de Informação e empreendedorismo para resolver um problema real.
+              </p>
+              <div className="bg-[#0a0a0c] border border-zinc-800/50 rounded-2xl p-5">
+                <div className="flex items-center gap-3 mb-3">
+                  <GraduationCap className="w-5 h-5 text-purple-500" />
+                  <span className="font-semibold text-sm uppercase tracking-wider text-purple-100">Equipe Fundadora</span>
+                </div>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-400">
+                  <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div> Rafael Baruc Silva</li>
+                  <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div> Alexandra S. Souza</li>
+                  <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div> Jorge da Silva Leal Jr.</li>
+                  <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div> Larissa Santana Silva</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
