@@ -325,9 +325,9 @@ export default function LandingPage() {
                 </div>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-400">
                   <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div> Rafael Baruc Silva</li>
-                  <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div> Alexandra S. Souza</li>
                   <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div> Jorge da Silva Leal Jr.</li>
                   <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div> Larissa Santana Silva</li>
+                  <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div> Alexandra S. Souza</li>
                 </ul>
               </div>
             </div>
